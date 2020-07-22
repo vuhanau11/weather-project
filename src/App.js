@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import CONFIG from './config';
+import dateBuilder from './constant/time';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -17,39 +18,9 @@ function App() {
         });
     }
   };
-
-  const dateBuilder = (time) => {
-    let months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    let days = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ];
-
-    let day = days[time.getDay()];
-    let date = time.getDate();
-    let month = months[time.getMonth()];
-    let year = time.getFullYear();
-
-    return `${day} ${date} ${month} ${year}`;
-  };
+  function handleValueChange(input) {
+    setQuery(input.target.value);
+  }
 
   return (
     <div
@@ -67,7 +38,7 @@ function App() {
             type="text"
             className="search-bar"
             placeholder="Search..."
-            onChange={(input) => setQuery(input.target.value)}
+            onChange={handleValueChange}
             value={query}
             onKeyPress={search}
           />
