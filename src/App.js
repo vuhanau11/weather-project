@@ -1,27 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import CONFIG from './config';
+import Search from './components/Search';
 import dateBuilder from './constant/time';
 
 function App() {
-  const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-
-  const search = (event) => {
-    if (event.key === 'Enter') {
-      fetch(`${CONFIG.url}weather?q=${query}&appid=${CONFIG.key}`)
-        .then((res) => res.json())
-        .then((result) => {
-          setWeather(result);
-          setQuery('');
-          console.log(result);
-        });
-    }
-  };
-  function handleValueChange(input) {
-    setQuery(input.target.value);
+  function onSearch(weather) {
+    setWeather(weather);
   }
-
   return (
     <div
       className={
@@ -33,16 +19,7 @@ function App() {
       }
     >
       <main>
-        <div className="search-box">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search..."
-            onChange={handleValueChange}
-            value={query}
-            onKeyPress={search}
-          />
-        </div>
+        <Search onSearch={onSearch} />
         {typeof weather.main !== 'undefined' ? (
           <div>
             <div className="location-box">

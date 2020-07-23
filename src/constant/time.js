@@ -1,4 +1,4 @@
-const dateBuilder = (time) => {
+const today = (time) => {
   let months = [
     'January',
     'February',
@@ -30,4 +30,4 @@ const dateBuilder = (time) => {
 
   return `${day} ${date} ${month} ${year}`;
 };
-export default dateBuilder;
+export default today;
