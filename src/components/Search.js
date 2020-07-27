@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { searchWeather } from '../services/weatherService';
+import './Search.css';
 
 function Search({ onSearch }) {
   const [query, setQuery] = useState('');
