@@ -8,6 +8,13 @@ function Search({ onSearch }) {
     setQuery(input.target.value);
   }
 
+  async function onKeyDownHandler(event) {
+    if (event.keyCode === 13) {
+      const weather = await searchWeather(query);
+      onSearch(weather);
+    }
+  }
+
   return (
     <div className="search-box">
       <input
@@ -16,10 +23,7 @@ function Search({ onSearch }) {
         placeholder="Search..."
         onChange={handleValueChange}
         value={query}
-        onKeyPress={async () => {
-          const weather = await searchWeather(query);
-          onSearch(weather);
-        }}
+        onKeyDown={onKeyDownHandler}
       />
     </div>
   );
