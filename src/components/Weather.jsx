@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
 import './Weather.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Search from './Search';
 import { WeatherProvider } from '../context/WeatherContext';
 import Temperation from './Temperation';
 import MoreInfo from './MoreInfo';
 import Location from './Location';
 import CurrentDate from './CurrentDate';
-import { WeatherDetail } from '../models/weather';
+import WeatherDetail from '../models/weather';
 
 function Weather() {
   const minTemp = new WeatherDetail();
