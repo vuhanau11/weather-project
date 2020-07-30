@@ -32,7 +32,7 @@ function Search({ onSearch }) {
         <input
           type="text"
           className="search-bar"
-          placeholder="Search..."
+          placeholder="Where do you live..."
           onChange={handleValueChange}
           value={query}
           onKeyDown={onKeyDownHandler}
